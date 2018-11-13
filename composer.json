@@ -39,7 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Waygou\\Xheetah\\XheetahServiceProvider"
+                "Waygou\\Xheetah\\ServiceProvider"
             ]
         }
     },
