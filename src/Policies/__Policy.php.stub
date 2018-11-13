@@ -1,0 +1,10 @@
+<?php
+
+namespace Waygou\Xheetah\Policies\::model::;
+
+use Waygou\Surveyor\Traits\AppliesPolicies;
+
+class DefaultPolicy
+{
+    use AppliesPolicies;
+}

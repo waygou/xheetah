@@ -1,0 +1,675 @@
+<?php
+
+use Waygou\Xheetah\Models\User;
+use Waygou\Xheetah\Models\Client;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Waygou\Surveyor\Models\Profile;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Waygou\Surveyor\Models\ProfileScope;
+use Waygou\Surveyor\Models\ProfilePolicy;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateXheetahSchema extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('user_logs', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->integer('user_id')
+                  ->nullable()
+                  ->unsigned();
+
+            $table->string('action_type')
+                  ->comment('In most of the cases will be a CRUD operation, E.g. create, update, delete, etc.')
+                  ->nullable();
+
+            $table->string('related_model')
+                  ->nullable();
+
+            $table->integer('related_model_id')
+                  ->unsigned()
+                  ->nullable();
+
+            $table->json('payload')
+                  ->nullable();
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        Schema::create('postal_code_range_mappings', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+
+            $table->string('origin_postal_code');
+            $table->string('origin_country');
+            $table->string('destination_postal_code');
+            $table->string('destination_country');
+
+            $table->integer('distance_km')
+                  ->unsigned();
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        Schema::create('delivery_statuses', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+
+            $table->string('code');
+            $table->string('description');
+            $table->string('status');
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+
+            /* Indexes */
+            $table->unique(['code']);
+        });
+
+        Schema::create('delivery_logs', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+
+            $table->integer('delivery_id')
+                  ->unsigned();
+
+            $table->integer('delivery_status_id')
+                  ->unsigned();
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        Schema::create('configuration', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->string('name');
+
+            $table->text('description')
+                  ->nullable();
+
+            $table->string('code');
+            $table->string('value');
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+
+            /* Indexes */
+            $table->unique(['code']);
+        });
+
+        Schema::create('tests', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+
+            $table->integer('size')
+                  ->unsigned()
+                  ->nullable();
+
+            $table->string('name')
+                  ->nullable();
+
+            $table->string('hints')
+                  ->nullable();
+
+            $table->integer('client_id')
+                  ->nullable()
+                  ->unsigned();
+
+            $table->integer('address_id')
+                  ->nullable()
+                  ->unsigned();
+
+            $table->string('address')
+                  ->nullable();
+
+            $table->string('city')
+                  ->nullable();
+
+            $table->string('locality')
+                  ->nullable();
+
+            $table->string('postal_code')
+                  ->nullable();
+
+            $table->string('country')
+                  ->nullable();
+
+            $table->string('country_code')
+                  ->nullable();
+
+            $table->string('lat_lng')
+                  ->nullable();
+
+            $table->string('map')
+                  ->nullable();
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        Schema::create('deliveries', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+
+            $table->integer('client_id')
+                  ->unsigned();
+
+            $table->integer('cost_center_id')
+                  ->nullable()
+                  ->unsigned();
+
+            $table->integer('service_type_id')
+                  ->unsigned();
+
+            $table->integer('created_by')
+                  ->comment('User id that created the delivery. Can be an employee or a client user.')
+                  ->unsigned();
+
+            $table->integer('courier_id')
+                  ->comment('Courier id that performed the delivery.')
+                  ->nullable()
+                  ->unsigned();
+
+            $table->string('origin_address');
+
+            $table->string('origin_city')
+                  ->nullable();
+
+            $table->string('origin_locality')
+                  ->nullable();
+
+            $table->string('origin_postal_code')
+                  ->nullable();
+
+            $table->string('origin_country')
+                  ->nullable();
+
+            $table->string('origin_country_code')
+                  ->nullable();
+
+            $table->text('notes')
+                  ->comment('Specific additional information for the pickup or the delivery information.')
+                  ->nullable();
+
+            $table->string('destination_address');
+
+            $table->string('destination_city')
+                  ->nullable();
+
+            $table->string('destination_locality')
+                  ->nullable();
+
+            $table->string('destination_postal_code')
+                  ->nullable();
+
+            $table->string('destination_country')
+                  ->nullable();
+
+            $table->string('destination_country_code')
+                  ->nullable();
+
+            $table->boolean('with_return')
+                  ->default(0);
+
+            $table->string('merchandise_description')
+                  ->nullable();
+
+            $table->integer('volumes_qty')
+                  ->unsigned()
+                  ->default(1);
+
+            $table->integer('volumes_total_weight')
+                  ->unsigned()
+                  ->nullable();
+
+            $table->decimal('price_to_request', 10, 2)
+                  ->comment('In case the Courier mas request a specific price at the delivery.')
+                  ->nullable();
+
+            $table->string('schedule_type')
+                  ->comment('now - Imediate, asap. future - Future date. Serves to make what is called \'agendamento\'.')
+                  ->default('now');
+
+            $table->datetime('schedule_planned_at')
+                  ->comment('If it\'s in future, when (date, time) will it is to start, in the destination local timezone.')
+                  ->nullable();
+
+            $table->text('comments_courier')
+                  ->comment('Additional information written by the Courier.')
+                  ->nullable();
+
+            $table->text('comments_internal')
+                  ->comment('Additional information that will not appear in the courier mobile device, only internally (for coordination, client, etc).')
+                  ->nullable();
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        // Many-to-many table that defines the service type information.
+        Schema::create('service_types', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->string('name');
+
+            $table->string('code')
+                  ->unique();
+
+            $table->string('duration_type_id');
+            $table->string('vehicle_type_id');
+
+            $table->integer('client_id')
+                  ->nullable()
+                  ->comment('In case there is an exception on the price request, we can create a new row specifically for a client to specify a specific price.')
+                  ->unsigned();
+
+            $table->decimal('price_request', 10, 2)
+                  ->default(0);
+
+            $table->decimal('price_request_additional', 10, 2)
+                  ->comment('Additional price in case the request is made outside of the company working hours. E.g. at night.')
+                  ->default(0);
+
+            $table->decimal('price_km', 10, 2)
+                  ->default(0);
+
+            $table->decimal('price_km_additional', 10, 2)
+                  ->comment('Additional km price in case the request is made outside of the company working hours. E.g. at night.')
+                  ->default(0);
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+
+            /* Indexes */
+            $table->unique(['duration_type_id', 'vehicle_type_id', 'client_id']);
+        });
+
+        Schema::create('vehicle_types', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->string('name');
+            $table->string('code');
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+
+            /* Indexes */
+            $table->unique(['code']);
+        });
+
+        Schema::create('duration_types', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->string('name');
+            $table->string('code');
+
+            $table->string('description')
+                  ->nullable();
+
+            $table->time('requested_until')
+                  ->nullable()
+                  ->default('23:59');
+
+            $table->integer('duration')
+                  ->unsigned()
+                  ->nullable();
+
+            $table->string('time_type')
+                  ->nullable()
+                  ->comment('Days (D), hours (H) or minutes (M).');
+
+            $table->time('next_day_deadline')
+                  ->comment('In case the service is requested after the max time, until when can it be delivered in the next day?')
+                  ->nullable();
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+
+            /* Indexes */
+            $table->unique(['code']);
+        });
+
+        Schema::create('vehicles', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->string('brandmodel');
+
+            $table->integer('vehicle_type_id')
+                  ->unsigned();
+
+            $table->date('since')
+                  ->nullable()
+                  ->comment('Contract date start. When did the vehicle started in service?');
+
+            $table->string('registration')
+                  ->nullable()
+                  ->comment('Can be an internal registration from the company like a code number.');
+
+            $table->string('license_plate')
+                  ->nullable();
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        Schema::create('main_roles', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->string('name');
+            $table->string('code');
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+
+            /* Indexes */
+            $table->unique(['code']);
+        });
+
+        Schema::create('clients', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->string('name');
+
+            $table->string('api_token')
+                  ->comment('The unique server-side token for this client, for REST API transactions (OAUTH2).')
+                  ->nullable();
+
+            $table->string('social_name')
+                  ->nullable();
+
+            $table->string('contact_name')
+                  ->nullable();
+
+            $table->string('contact_phone')
+                  ->nullable();
+
+            $table->string('contact_email')
+                  ->nullable();
+
+            $table->date('contract_start')
+                  ->nullable();
+
+            $table->string('fiscal_number')
+                  ->nullable();
+
+            $table->string('address')
+                  ->nullable();
+
+            $table->string('city')
+                  ->nullable();
+
+            $table->string('locality')
+                  ->nullable();
+
+            $table->string('postal_code')
+                  ->nullable();
+
+            $table->string('country')
+                  ->nullable();
+
+            $table->string('country_code')
+                  ->nullable();
+
+            $table->string('map')
+                  ->nullable();
+
+            $table->boolean('is_active')
+                ->default(true);
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        Schema::create('cost_centers', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+            $table->string('name');
+
+            $table->integer('client_id');
+
+            $table->string('contact_name')
+                  ->nullable();
+
+            $table->string('contact_phone')
+                  ->nullable();
+
+            $table->string('contact_email')
+                  ->nullable();
+
+            $table->text('comments')
+                  ->nullable()
+                  ->comment('Any specific comments you want to add to this cost center.');
+
+            $table->boolean('is_active')
+                ->default(true);
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        Schema::create('addresses', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+
+            $table->string('name')
+                  ->comment('An easy to remember name for this address. E.g. \'Close to Carrefour in Divonne.\''),
+
+            $table->string('address'),
+
+            $table->string('floor_number')
+                  ->nullable();
+
+            $table->string('city')
+                  ->nullable();
+
+            $table->string('locality')
+                  ->nullable();
+
+            $table->string('postal_code')
+                  ->nullable();
+
+            $table->string('country'),
+
+            $table->string('country_code'),
+
+            $table->string('map')
+                  ->nullable();
+
+            $table->integer('addressable_id')
+                  ->unsigned()
+                  ->index();
+
+            $table->string('addressable_type');
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
+        /** Table modifiers */
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('phone')
+                  ->nullable()
+                  ->after('password');
+
+              $table->boolean('is_active')
+                  ->default(true)
+                  ->after('phone');
+
+            $table->integer('client_id')
+                  ->unsigned()
+                  ->nullable()
+                  ->after('is_active')
+                  ->index();
+
+            $table->integer('main_role_id')
+                  ->unsigned()
+                  ->after('client_id')
+                  ->index();
+
+            $table->integer('vehicle_id')
+                  ->nullable()
+                  ->unsigned()
+                  ->after('main_role_id')
+                  ->index();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('main_roles');
+        Schema::drop('clients');
+        Schema::drop('addresses');
+        Schema::drop('cost_centers');
+        Schema::drop('vehicles');
+        Schema::drop('duration_types');
+        Schema::drop('vehicle_types');
+        Schema::drop('service_types');
+        Schema::drop('deliveries');
+        Schema::drop('configuration');
+        Schema::drop('test');
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('client_id');
+            $table->dropColumn('phone');
+            $table->dropColumn('is_active');
+            $table->dropColumn('main_role_id');
+            $table->dropColumn('vehicle_id');
+        });
+    }
+}

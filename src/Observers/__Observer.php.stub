@@ -1,0 +1,64 @@
+<?php
+
+namespace Waygou\Xheetah\Observers;
+
+use Waygou\Xheetah\Models\::model::;
+
+class ::model::Observer
+{
+
+    public function retrieved(::model:: $model)
+    {
+        //
+    }
+
+    public function saving(::model:: $model)
+    {
+        //
+    }
+
+    public function saved(::model:: $model)
+    {
+        //
+    }
+
+    public function creating(::model:: $model)
+    {
+        //
+    }
+
+    public function created(::model:: $model)
+    {
+        //
+    }
+
+    public function updating(::model:: $model)
+    {
+        //
+    }
+
+    public function updated(::model:: $model)
+    {
+        //
+    }
+
+    public function deleting(::model:: $model)
+    {
+        //
+    }
+
+    public function deleted(::model:: $model)
+    {
+        //
+    }
+
+    public function restored(::model:: $model)
+    {
+        //
+    }
+
+    public function forceDeleted(::model:: $model)
+    {
+        //
+    }
+}
