@@ -2,9 +2,9 @@
 
 namespace Waygou\Xheetah\Abstracts;
 
-use Waygou\Helpers\Traits\CanSaveMany;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Waygou\Helpers\Traits\CanSaveMany;
 
 abstract class XheetahModel extends Model
 {
