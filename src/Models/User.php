@@ -2,6 +2,7 @@
 
 namespace Waygou\Xheetah\Models;
 
+use Hyn\Tenancy\Traits\UsesTenantConnection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Waygou\Helpers\Traits\CanSaveMany;
@@ -15,6 +16,7 @@ class User extends Authenticatable
     use UsesProfiles;
     use AppliesScopes;
     use CanSaveMany;
+    use UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.

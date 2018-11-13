@@ -19,10 +19,11 @@
         "predis/predis": "^1.1",
         "pelmered/fake-car": "^1.0",
         "fzaninotto/faker": "^1.8",
+        "hyn/multi-tenant": "^5.3",
         "waygou/helpers": "dev-master",
         "waygou/xheetah-nova": "dev-master",
         "waygou/surveyor": "dev-master",
-        "waygou/surveyor-nova": "dev-master",
+        "waygou/surveyor-nova": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.1"
