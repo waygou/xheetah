@@ -591,9 +591,9 @@ class CreateXheetahSchema extends Migration
             $table->string('postal_code')
                   ->nullable();
 
-            $table->string('country'),
+            $table->string('country');
 
-            $table->string('country_code'),
+            $table->string('country_code');
 
             $table->string('map')
                   ->nullable();
