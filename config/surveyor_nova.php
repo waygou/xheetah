@@ -9,5 +9,5 @@ return [
     |
     */
 
-    'user_resource' => Waygou\NovaXheetah\Resources\User::class,
+    'user_resource' => Waygou\XheetahNova\Resources\User::class,
 ];
