@@ -91,7 +91,7 @@ class ServiceProvider extends BaseServiceProvider
             __DIR__.'/../config/xheetah.php'        => config_path('xheetah.php'),
             __DIR__.'/../config/auth.php'           => config_path('auth.php'),
             __DIR__.'/../config/surveyor.php'       => config_path('surveyor.php'),
-            __DIR__.'/../config/nova_surveyor.php'  => config_path('nova_surveyor.php'),
+            __DIR__.'/../config/surveyor_nova.php'  => config_path('surveyor_nova.php'),
             __DIR__.'/../database/factories/'       => database_path('factories/'),
             __DIR__.'/../database/seeds/'           => database_path('seeds/'),
         ], 'xheetah-overrides');
@@ -105,6 +105,7 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->commands([
-            InstallCommand::class, ]);
+            //InstallCommand::class,
+        ]);
     }
 }
