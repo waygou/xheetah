@@ -575,9 +575,9 @@ class CreateXheetahSchema extends Migration
             $table->increments('id');
 
             $table->string('name')
-                  ->comment('An easy to remember name for this address. E.g. \'Close to Carrefour in Divonne.\''),
+                  ->comment("An easy to remember name for this address. E.g. 'Close to Carrefour in Divonne.'");
 
-            $table->string('address'),
+            $table->string('address');
 
             $table->string('floor_number')
                   ->nullable();
