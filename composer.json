@@ -23,7 +23,8 @@
         "waygou/helpers": "dev-master",
         "waygou/xheetah-nova": "dev-master",
         "waygou/surveyor": "dev-master",
-        "waygou/surveyor-nova": "dev-master"
+        "waygou/surveyor-nova": "dev-master",
+        "waygou/multi-tenant": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.1"
