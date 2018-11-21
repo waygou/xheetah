@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 use Waygou\Surveyor\Models\Policy;
 use Waygou\Surveyor\Models\Profile;
 use Waygou\Surveyor\Models\Scope;
-use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\Configuration;
 use Waygou\Xheetah\Models\MainRole;
 use Waygou\Xheetah\Models\User;
