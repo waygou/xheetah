@@ -1,5 +1,7 @@
 <?php
 
+namespace Waygou\Xheetah\Seeders;
+
 use Illuminate\Database\Seeder;
 use Waygou\Surveyor\Models\Policy;
 use Waygou\Surveyor\Models\Profile;
@@ -9,7 +11,7 @@ use Waygou\Xheetah\Models\Configuration;
 use Waygou\Xheetah\Models\MainRole;
 use Waygou\Xheetah\Models\User;
 
-class XheetahSchemaSeeder extends Seeder
+class InstallSeeder extends Seeder
 {
     /**
      * Run the database seeds.
