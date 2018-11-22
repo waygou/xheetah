@@ -58,7 +58,7 @@ class InstallCommand extends Command
         $this->commandExecute('php artisan vendor:publish --provider=Waygou\SurveyorNova\ToolServiceProvider');
 
         $this->info('Publishing Nova Xheetah Provider ...');
-        $this->commandExecute('php artisan vendor:publish --provider=Waygou\NovaXheetah\ToolServiceProvider --force');
+        $this->commandExecute('php artisan vendor:publish --provider=Waygou\XheetahNova\ToolServiceProvider --force');
 
         $this->info('Publishing Xheetah Utilities Provider ...');
         $this->commandExecute('php artisan vendor:publish --provider=Waygou\XheetahUtils\XheetahUtilsServiceProvider --force');
