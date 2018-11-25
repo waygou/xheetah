@@ -80,7 +80,7 @@ class ServiceProvider extends BaseServiceProvider
         if (!class_exists('CreateXheetahSchema')) {
             $timestamp = date('Y_m_d_His', time());
             $this->publishes([
-                __DIR__.'/../Database/Migrations/create_xheetah_schema.php.stub' => $this->app->databasePath()."/migrations/{$timestamp}_create_xheetah_schema.php",
+                __DIR__.'/../database/migrations/create_xheetah_schema.php.stub' => $this->app->databasePath()."/migrations/{$timestamp}_create_xheetah_schema.php",
             ], 'xheetah-create-schema');
         }
 
