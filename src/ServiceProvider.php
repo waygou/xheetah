@@ -4,7 +4,6 @@ namespace Waygou\Xheetah;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Waygou\Surveyor\Bootstrap\SurveyorProvider;
 use Waygou\Xheetah\Commands\InstallCommand;
@@ -42,8 +41,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
-
         $this->registerPublishing();
 
         $this->registerObservers();
