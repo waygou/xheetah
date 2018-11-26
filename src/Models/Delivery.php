@@ -43,6 +43,6 @@ class Delivery extends XheetahModel
     {
         // We don't assign to a Courier model, because later on that user can not be
         // a Courier anymore. So, we attached it to the User.
-        return $this->belongsTo(User::class, 'courrier_id');
+        return $this->belongsTo(User::class, 'courier_id');
     }
 }
