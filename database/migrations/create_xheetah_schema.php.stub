@@ -477,48 +477,22 @@ class CreateXheetahSchema extends Migration
             $table->increments('id');
             $table->string('name');
 
-            $table->string('api_token')
-                  ->comment('The unique server-side token for this client, for REST API transactions (OAUTH2).')
-                  ->nullable();
+            $table->string('social_name');
 
-            $table->string('social_name')
-                  ->nullable();
-
-            $table->string('contact_name')
-                  ->nullable();
+            $table->string('contact_name');
 
             $table->string('contact_phone')
                   ->nullable();
 
-            $table->string('contact_email')
-                  ->nullable();
+            $table->string('contact_email');
 
-            $table->date('contract_start')
-                  ->nullable();
+            $table->date('contract_start');
 
             $table->string('fiscal_number')
                   ->nullable();
 
-            $table->string('address')
-                  ->nullable();
-
-            $table->string('city')
-                  ->nullable();
-
-            $table->string('locality')
-                  ->nullable();
-
-            $table->string('postal_code')
-                  ->nullable();
-
-            $table->string('country')
-                  ->nullable();
-
-            $table->string('country_code')
-                  ->nullable();
-
-            $table->string('map')
-                  ->nullable();
+            $table->string('api_token')
+                  ->comment('The unique server-side token for this client, for REST API transactions (OAUTH2).');
 
             $table->boolean('is_active')
                 ->default(true);
@@ -533,6 +507,9 @@ class CreateXheetahSchema extends Migration
             /** Collation */
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
+
+            /* Indexes */
+            $table->unique(['api_token']);
         });
 
         Schema::create('cost_centers', function (Blueprint $table) {

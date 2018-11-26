@@ -24,30 +24,13 @@ class ClientObserver
 
     public function creating(Client $model)
     {
-        //
+        // Generate a random 15 chars api token for REST transactions.
+        $model->api_token = str_random(15);
     }
 
     public function created(Client $model)
     {
-        /*
-        // Set client id for cost center.
-        $clientId = $model->id;
-
-        // To add the full attributes, let's remove default fields.
-        unset(
-            $model->id,
-            $model->updated_at,
-            $model->created_at,
-            $model->fiscal_number,
-            $model->contracted_at
-        );
-
-        // Change the name for 'default'.
-        $model->name = 'Default';
-
-        // Add a default Cost Center with the same information as the client.
-        CostCenter::create(array_merge($model->getAttributes(), ['client_id' => $clientId]));
-        */
+        //
     }
 
     public function updating(Client $model)
