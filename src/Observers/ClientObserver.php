@@ -3,7 +3,6 @@
 namespace Waygou\Xheetah\Observers;
 
 use Waygou\Xheetah\Models\Client;
-use Waygou\Xheetah\Models\CostCenter;
 
 class ClientObserver
 {
