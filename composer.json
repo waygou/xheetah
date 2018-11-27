@@ -21,7 +21,7 @@
         "fzaninotto/faker": "^1.8",
         "hyn/multi-tenant": "^5.3",
         "waygou/helpers": "dev-master",
-        "waygou/xheetah-nova": "dev-master",
+        "waygou/xheetah-api": "dev-master",
         "waygou/xheetah-utils": "dev-master",
         "waygou/surveyor": "dev-master",
         "waygou/surveyor-nova": "dev-master",
