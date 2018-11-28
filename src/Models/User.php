@@ -2,16 +2,13 @@
 
 namespace Waygou\Xheetah\Models;
 
-use Waygou\Xheetah\Models\Client;
-use Waygou\Xheetah\Models\Vehicle;
-use Waygou\Surveyor\Models\Profile;
-use Waygou\Xheetah\Models\MainRole;
-use Waygou\Helpers\Traits\CanSaveMany;
-use Illuminate\Notifications\Notifiable;
-use Waygou\Surveyor\Traits\UsesProfiles;
-use Waygou\Surveyor\Traits\AppliesScopes;
 use Hyn\Tenancy\Traits\UsesTenantConnection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Waygou\Helpers\Traits\CanSaveMany;
+use Waygou\Surveyor\Models\Profile;
+use Waygou\Surveyor\Traits\AppliesScopes;
+use Waygou\Surveyor\Traits\UsesProfiles;
 
 class User extends Authenticatable
 {
