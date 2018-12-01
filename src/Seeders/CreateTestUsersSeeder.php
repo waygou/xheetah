@@ -3,10 +3,10 @@
 namespace Waygou\Xheetah\Seeders;
 
 use Illuminate\Database\Seeder;
-use Waygou\Xheetah\Models\User;
-use Waygou\Xheetah\Models\Client;
 use Waygou\Surveyor\Models\Profile;
+use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\MainRole;
+use Waygou\Xheetah\Models\User;
 
 class CreateTestUsersSeeder extends Seeder
 {
