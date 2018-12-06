@@ -2,10 +2,10 @@
 
 namespace Waygou\Xheetah\Scopes\Childs\Employee;
 
-use Illuminate\Database\Eloquent\Builder;
+use Waygou\Xheetah\Models\MainRole;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Waygou\Xheetah\Models\MainRole;
+use Illuminate\Database\Eloquent\Builder;
 
 class RestrictByEmployeeMainRole implements Scope
 {

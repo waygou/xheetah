@@ -2,8 +2,8 @@
 
 namespace Waygou\Xheetah\Observers;
 
-use Illuminate\Support\Facades\Auth;
 use Waygou\Xheetah\Models\Delivery;
+use Illuminate\Support\Facades\Auth;
 
 class DeliveryObserver
 {

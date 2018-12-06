@@ -2,10 +2,10 @@
 
 namespace Waygou\Xheetah\Abstracts;
 
-use Hyn\Tenancy\Traits\UsesTenantConnection;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Waygou\Helpers\Traits\CanSaveMany;
+use Illuminate\Database\Eloquent\Model;
+use Hyn\Tenancy\Traits\UsesTenantConnection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 abstract class XheetahModel extends Model
 {

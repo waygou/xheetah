@@ -2,9 +2,9 @@
 
 namespace Waygou\Xheetah\Policies\Childs\Employee;
 
-use Waygou\Surveyor\Traits\AppliesPolicies;
-use Waygou\Xheetah\Models\Childs\Employee;
 use Waygou\Xheetah\Models\User;
+use Waygou\Xheetah\Models\Childs\Employee;
+use Waygou\Surveyor\Traits\AppliesPolicies;
 
 class RestrictToOwn
 {
