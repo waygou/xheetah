@@ -20,6 +20,56 @@ class CreateXheetahSchema extends Migration
      */
     public function up()
     {
+        Schema::create('delivery_statuses', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+
+            $table->string('name');
+
+            $table->string('code');
+
+            $table->string('description');
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+
+            /* Indexes */
+            $table->unique(['code']);
+        });
+
+        Schema::create('delivery_status_changes', function (Blueprint $table) {
+            /** Columns */
+            $table->increments('id');
+
+            $table->integer('delivery_id')
+                  ->unsigned();
+
+            $table->integer('delivery_status_id')
+                  ->unsigned();
+
+            $table->integer('courier_id')
+                  ->unsigned();
+
+            /** System columns */
+            $table->timestamps();
+            $table->softDeletes();
+
+            /** Engine */
+            $table->engine = 'InnoDB';
+
+            /** Collation */
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_unicode_ci';
+        });
+
         Schema::create('user_logs', function (Blueprint $table) {
             /** Columns */
             $table->increments('id');
@@ -75,29 +125,6 @@ class CreateXheetahSchema extends Migration
             /** Collation */
             $table->charset = 'utf8';
             $table->collation = 'utf8_unicode_ci';
-        });
-
-        Schema::create('delivery_statuses', function (Blueprint $table) {
-            /** Columns */
-            $table->increments('id');
-
-            $table->string('code');
-            $table->string('description');
-            $table->string('status');
-
-            /** System columns */
-            $table->timestamps();
-            $table->softDeletes();
-
-            /** Engine */
-            $table->engine = 'InnoDB';
-
-            /** Collation */
-            $table->charset = 'utf8';
-            $table->collation = 'utf8_unicode_ci';
-
-            /* Indexes */
-            $table->unique(['code']);
         });
 
         Schema::create('delivery_logs', function (Blueprint $table) {
@@ -637,6 +664,8 @@ class CreateXheetahSchema extends Migration
         Schema::drop('duration_types');
         Schema::drop('vehicle_types');
         Schema::drop('delivery_types');
+        Schema::drop('delivery_status_changes');
+        Schema::drop('delivery_statuses');
         Schema::drop('deliveries');
         Schema::drop('configuration');
         Schema::drop('test');
