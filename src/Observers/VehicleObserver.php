@@ -18,7 +18,7 @@ class VehicleObserver
 
     public function saved(Vehicle $model)
     {
-        //
+        save_user_log($model);
     }
 
     public function creating(Vehicle $model)

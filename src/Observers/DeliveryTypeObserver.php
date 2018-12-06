@@ -20,7 +20,7 @@ class DeliveryTypeObserver
 
     public function saved(DeliveryType $model)
     {
-        //
+        save_user_log($model);
     }
 
     public function creating(DeliveryType $model)

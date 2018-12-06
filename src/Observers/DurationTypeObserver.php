@@ -20,7 +20,7 @@ class DurationTypeObserver
 
     public function saved(DurationType $model)
     {
-        //
+        save_user_log($model);
     }
 
     public function creating(DurationType $model)

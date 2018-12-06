@@ -20,7 +20,7 @@ class VehicleTypeObserver
 
     public function saved(VehicleType $model)
     {
-        //
+        save_user_log($model);
     }
 
     public function creating(VehicleType $model)

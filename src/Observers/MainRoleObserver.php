@@ -15,7 +15,7 @@ class MainRoleObserver
 
     public function saved(MainRole $model)
     {
-        //
+        save_user_log($model);
     }
 
     public function creating(MainRole $model)

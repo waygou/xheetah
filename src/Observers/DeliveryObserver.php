@@ -19,7 +19,7 @@ class DeliveryObserver
 
     public function saved(Delivery $model)
     {
-        //
+        save_user_log($model);
     }
 
     public function creating(Delivery $model)

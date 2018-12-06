@@ -27,7 +27,7 @@ class UserObserver
      */
     public function saved(User $model)
     {
-        //
+        save_user_log($model);
     }
 
     /**
