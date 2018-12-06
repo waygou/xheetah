@@ -2,8 +2,8 @@
 
 namespace Waygou\Xheetah\Observers\Childs;
 
-use Waygou\Xheetah\Models\Childs\ClientUser;
 use Waygou\Xheetah\Models\MainRole;
+use Waygou\Xheetah\Models\Childs\ClientUser;
 
 class ClientUserObserver
 {

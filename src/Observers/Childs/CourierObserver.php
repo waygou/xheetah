@@ -3,8 +3,8 @@
 namespace Waygou\Xheetah\Observers;
 
 use Exception;
-use Waygou\Xheetah\Models\Childs\Courier;
 use Waygou\Xheetah\Models\MainRole;
+use Waygou\Xheetah\Models\Childs\Courier;
 
 class CourierObserver
 {

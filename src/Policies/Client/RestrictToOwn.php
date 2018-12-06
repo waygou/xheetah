@@ -2,9 +2,9 @@
 
 namespace Waygou\Xheetah\Policies\Client;
 
-use Waygou\Surveyor\Traits\AppliesPolicies;
-use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\User;
+use Waygou\Xheetah\Models\Client;
+use Waygou\Surveyor\Traits\AppliesPolicies;
 
 class RestrictToOwn
 {

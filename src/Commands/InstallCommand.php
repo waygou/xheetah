@@ -4,8 +4,8 @@ namespace Waygou\Xheetah\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class InstallCommand extends Command
 {
@@ -45,7 +45,7 @@ class InstallCommand extends Command
         $this->info('*** Xheetah - Courier Backend framework - First installation ***');
         $this->info('');
 
-        if (!File::exists(app_path('Providers/NovaServiceProvider.php'))) {
+        if (! File::exists(app_path('Providers/NovaServiceProvider.php'))) {
             $this->info('');
 
             return $this->error('Error -- Looks like Laravel Nova is not installed on your system. Please try again.');
@@ -99,7 +99,7 @@ class InstallCommand extends Command
         $process->run();
 
         // executes after the command finishes
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
 

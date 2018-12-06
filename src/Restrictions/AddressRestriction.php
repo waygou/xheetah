@@ -2,8 +2,8 @@
 
 namespace Waygou\Xheetah\Restrictions;
 
-use Waygou\Xheetah\Models\Address;
 use Waygou\Xheetah\Models\Client;
+use Waygou\Xheetah\Models\Address;
 use Waygou\Xheetah\Models\CostCenter;
 
 class AddressRestriction

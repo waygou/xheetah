@@ -1,23 +1,23 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
-if (!function_exists('is_mine')) {
+if (! function_exists('is_mine')) {
     function is_mine($id)
     {
         return me()->id == $id;
     }
 }
 
-if (!function_exists('me')) {
+if (! function_exists('me')) {
     function me()
     {
         return Auth::user();
     }
 }
 
-if (!function_exists('seed_rand_id')) {
+if (! function_exists('seed_rand_id')) {
     function seed_rand_id($table, $column = 'id')
     {
         $ids = DB::table($table)
@@ -32,7 +32,7 @@ if (!function_exists('seed_rand_id')) {
     }
 }
 
-if (!function_exists('seed_rand_id_from_nulls')) {
+if (! function_exists('seed_rand_id_from_nulls')) {
     function seed_rand_id_from_nulls($table, $column)
     {
         $ids = DB::table($table)
@@ -48,7 +48,7 @@ if (!function_exists('seed_rand_id_from_nulls')) {
     }
 }
 
-if (!function_exists('where_am_i')) {
+if (! function_exists('where_am_i')) {
     function where_am_i($prefix = null)
     {
         info($_SERVER['HTTP_REFERER']);

@@ -2,9 +2,9 @@
 
 namespace Waygou\Xheetah\Scopes\Client;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Waygou\Surveyor\Bootstrap\SurveyorProvider;
 
 class RestrictToMyClient implements Scope

@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Waygou\Surveyor\Models\Profile;
-use Waygou\Xheetah\Models\Address;
-use Waygou\Xheetah\Models\Client;
-use Waygou\Xheetah\Models\CostCenter;
-use Waygou\Xheetah\Models\DurationType;
-use Waygou\Xheetah\Models\MainRole;
-use Waygou\Xheetah\Models\DeliveryType;
 use Waygou\Xheetah\Models\User;
+use Waygou\Xheetah\Models\Client;
+use Waygou\Xheetah\Models\Address;
 use Waygou\Xheetah\Models\Vehicle;
+use Waygou\Surveyor\Models\Profile;
+use Waygou\Xheetah\Models\MainRole;
+use Waygou\Xheetah\Models\CostCenter;
 use Waygou\Xheetah\Models\VehicleType;
+use Waygou\Xheetah\Models\DeliveryType;
+use Waygou\Xheetah\Models\DurationType;
 
 class XheetahTestingDataSeeder extends Seeder
 {

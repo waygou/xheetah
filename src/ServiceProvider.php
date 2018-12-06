@@ -2,35 +2,35 @@
 
 namespace Waygou\Xheetah;
 
+use Waygou\Xheetah\Models\User;
+use Waygou\Xheetah\Models\Client;
+use Waygou\Xheetah\Models\Address;
+use Waygou\Xheetah\Models\Vehicle;
+use Waygou\Xheetah\Models\Delivery;
+use Waygou\Xheetah\Models\MainRole;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use Waygou\Surveyor\Bootstrap\SurveyorProvider;
-use Waygou\Xheetah\Commands\InstallCommand;
-use Waygou\Xheetah\Models\Address;
-use Waygou\Xheetah\Models\Childs\ClientUser;
-use Waygou\Xheetah\Models\Childs\Courier;
-use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\CostCenter;
-use Waygou\Xheetah\Models\Delivery;
-use Waygou\Xheetah\Models\DurationType;
-use Waygou\Xheetah\Models\MainRole;
-use Waygou\Xheetah\Models\DeliveryType;
-use Waygou\Xheetah\Models\User;
-use Waygou\Xheetah\Models\Vehicle;
 use Waygou\Xheetah\Models\VehicleType;
-use Waygou\Xheetah\Observers\AddressObserver;
-use Waygou\Xheetah\Observers\Childs\ClientUserObserver;
-use Waygou\Xheetah\Observers\ClientObserver;
-use Waygou\Xheetah\Observers\CostCenterObserver;
-use Waygou\Xheetah\Observers\CourierObserver;
-use Waygou\Xheetah\Observers\DeliveryObserver;
-use Waygou\Xheetah\Observers\DurationTypeObserver;
-use Waygou\Xheetah\Observers\MainRoleObserver;
-use Waygou\Xheetah\Observers\DeliveryTypeObserver;
+use Waygou\Xheetah\Models\DeliveryType;
+use Waygou\Xheetah\Models\DurationType;
+use Waygou\Xheetah\Models\Childs\Courier;
 use Waygou\Xheetah\Observers\UserObserver;
+use Waygou\Xheetah\Commands\InstallCommand;
+use Waygou\Xheetah\Models\Childs\ClientUser;
+use Waygou\Xheetah\Observers\ClientObserver;
+use Waygou\Xheetah\Observers\AddressObserver;
+use Waygou\Xheetah\Observers\CourierObserver;
 use Waygou\Xheetah\Observers\VehicleObserver;
+use Waygou\Xheetah\Observers\DeliveryObserver;
+use Waygou\Xheetah\Observers\MainRoleObserver;
+use Waygou\Surveyor\Bootstrap\SurveyorProvider;
+use Waygou\Xheetah\Observers\CostCenterObserver;
 use Waygou\Xheetah\Observers\VehicleTypeObserver;
+use Waygou\Xheetah\Observers\DeliveryTypeObserver;
+use Waygou\Xheetah\Observers\DurationTypeObserver;
+use Waygou\Xheetah\Observers\Childs\ClientUserObserver;
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -77,7 +77,7 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function registerPublishing()
     {
-        if (!class_exists('CreateXheetahSchema')) {
+        if (! class_exists('CreateXheetahSchema')) {
             $timestamp = date('Y_m_d_His', time());
             $this->publishes([
                 __DIR__.'/../database/migrations/create_xheetah_schema.php.stub' => $this->app->databasePath()."/migrations/{$timestamp}_create_xheetah_schema.php",

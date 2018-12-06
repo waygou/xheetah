@@ -3,12 +3,12 @@
 namespace Waygou\Xheetah\Seeders;
 
 use Illuminate\Database\Seeder;
+use Waygou\Xheetah\Models\User;
+use Waygou\Surveyor\Models\Scope;
 use Waygou\Surveyor\Models\Policy;
 use Waygou\Surveyor\Models\Profile;
-use Waygou\Surveyor\Models\Scope;
-use Waygou\Xheetah\Models\Configuration;
 use Waygou\Xheetah\Models\MainRole;
-use Waygou\Xheetah\Models\User;
+use Waygou\Xheetah\Models\Configuration;
 
 class InstallSeeder extends Seeder
 {
