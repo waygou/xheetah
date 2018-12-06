@@ -7,7 +7,7 @@ use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\CostCenter;
 use Waygou\Xheetah\Models\DurationType;
 use Waygou\Xheetah\Models\MainRole;
-use Waygou\Xheetah\Models\ServiceType;
+use Waygou\Xheetah\Models\DeliveryType;
 use Waygou\Xheetah\Models\User;
 use Waygou\Xheetah\Models\Vehicle;
 use Waygou\Xheetah\Models\VehicleType;
@@ -226,8 +226,8 @@ class XheetahTestingDataSeeder extends Seeder
             $user->profiles()->attach(Profile::where('code', 'employee-display-only')->first()->id);
         });
 
-        // Service types.
-        ServiceType::saveMany([['name'                     => 'Imediato (Carro)',
+        // Delivery types.
+        DeliveryType::saveMany([['name'                     => 'Imediato (Carro)',
                                 'code'                     => 'imediate-car',
                                 'duration_type_id'         => DurationType::where('code', 'immediate')->first()->id,
                                 'vehicle_type_id'          => VehicleType::Where('code', 'car')->first()->id,

@@ -15,7 +15,7 @@ use Waygou\Xheetah\Models\CostCenter;
 use Waygou\Xheetah\Models\Delivery;
 use Waygou\Xheetah\Models\DurationType;
 use Waygou\Xheetah\Models\MainRole;
-use Waygou\Xheetah\Models\ServiceType;
+use Waygou\Xheetah\Models\DeliveryType;
 use Waygou\Xheetah\Models\User;
 use Waygou\Xheetah\Models\Vehicle;
 use Waygou\Xheetah\Models\VehicleType;
@@ -27,7 +27,7 @@ use Waygou\Xheetah\Observers\CourierObserver;
 use Waygou\Xheetah\Observers\DeliveryObserver;
 use Waygou\Xheetah\Observers\DurationTypeObserver;
 use Waygou\Xheetah\Observers\MainRoleObserver;
-use Waygou\Xheetah\Observers\ServiceTypeObserver;
+use Waygou\Xheetah\Observers\DeliveryTypeObserver;
 use Waygou\Xheetah\Observers\UserObserver;
 use Waygou\Xheetah\Observers\VehicleObserver;
 use Waygou\Xheetah\Observers\VehicleTypeObserver;
@@ -71,7 +71,7 @@ class ServiceProvider extends BaseServiceProvider
         Vehicle::observe(VehicleObserver::class);
         VehicleType::observe(VehicleTypeObserver::class);
         DurationType::observe(DurationTypeObserver::class);
-        ServiceType::observe(ServiceTypeObserver::class);
+        DeliveryType::observe(DeliveryTypeObserver::class);
         Delivery::observe(DeliveryObserver::class);
     }
 

@@ -8,6 +8,6 @@ class DurationType extends XheetahModel
 {
     public function serviceTypes()
     {
-        return $this->hasMany(ServiceType::class);
+        return $this->hasMany(DeliveryType::class);
     }
 }

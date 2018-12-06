@@ -31,7 +31,7 @@ class Delivery extends XheetahModel
 
     public function serviceType()
     {
-        return $this->belongsTo(ServiceType::class);
+        return $this->belongsTo(DeliveryType::class);
     }
 
     public function creator()

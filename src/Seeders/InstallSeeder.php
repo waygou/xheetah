@@ -114,12 +114,12 @@ class InstallSeeder extends Seeder
              'is_data_restricted' => false,
              'description'        => 'Default policy for clients.', ],
 
-            ['name'               => 'Service Type default',
-             'code'               => 'service-type-default',
-             'model'              => 'Waygou\Xheetah\Models\ServiceType',
-             'policy'             => 'Waygou\Xheetah\Policies\ServiceType\DefaultPolicy',
+            ['name'               => 'Delivery Type default',
+             'code'               => 'delivery-type-default',
+             'model'              => 'Waygou\Xheetah\Models\DeliveryType',
+             'policy'             => 'Waygou\Xheetah\Policies\DeliveryType\DefaultPolicy',
              'is_data_restricted' => false,
-             'description'        => 'Default policy for service types.', ],
+             'description'        => 'Default policy for delivery types.', ],
 
              /*
             ['name' => 'Manages its own Client',
@@ -242,7 +242,7 @@ class InstallSeeder extends Seeder
              Policy::where('code', 'cost-center-default')->first()->id,
              Policy::where('code', 'courier-default')->first()->id,
              Policy::where('code', 'user-default')->first()->id,
-             Policy::where('code', 'service-type-default')->first()->id,
+             Policy::where('code', 'delivery-type-default')->first()->id,
              Policy::where('code', 'employee-default')->first()->id,
              Policy::where('code', 'duration-type-default')->first()->id,
              Policy::where('code', 'delivery-default')->first()->id,

@@ -13,7 +13,9 @@ class DurationTypeObserver
 
     public function saving(DurationType $model)
     {
-        //
+        if (empty($model->code)) {
+            $model->code = kebab_case($model->name);
+        }
     }
 
     public function saved(DurationType $model)

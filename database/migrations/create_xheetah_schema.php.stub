@@ -217,7 +217,7 @@ class CreateXheetahSchema extends Migration
                   ->nullable()
                   ->unsigned();
 
-            $table->integer('service_type_id')
+            $table->integer('delivery_type_id')
                   ->unsigned();
 
             $table->integer('created_by')
@@ -313,8 +313,8 @@ class CreateXheetahSchema extends Migration
             $table->collation = 'utf8_unicode_ci';
         });
 
-        // Many-to-many table that defines the service type information.
-        Schema::create('service_types', function (Blueprint $table) {
+        // Many-to-many table that defines the delivery type information.
+        Schema::create('delivery_types', function (Blueprint $table) {
             /** Columns */
             $table->increments('id');
             $table->string('name');
@@ -636,7 +636,7 @@ class CreateXheetahSchema extends Migration
         Schema::drop('vehicles');
         Schema::drop('duration_types');
         Schema::drop('vehicle_types');
-        Schema::drop('service_types');
+        Schema::drop('delivery_types');
         Schema::drop('deliveries');
         Schema::drop('configuration');
         Schema::drop('test');

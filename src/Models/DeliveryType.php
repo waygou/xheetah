@@ -4,7 +4,7 @@ namespace Waygou\Xheetah\Models;
 
 use Waygou\Xheetah\Abstracts\XheetahModel;
 
-class ServiceType extends XheetahModel
+class DeliveryType extends XheetahModel
 {
     protected $casts = [
         'price_request'            => 'float',

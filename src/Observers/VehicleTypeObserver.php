@@ -13,7 +13,9 @@ class VehicleTypeObserver
 
     public function saving(VehicleType $model)
     {
-        //
+        if (empty($model->code)) {
+            $model->code = kebab_case($model->name);
+        }
     }
 
     public function saved(VehicleType $model)
