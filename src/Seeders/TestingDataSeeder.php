@@ -3,7 +3,6 @@
 namespace Waygou\Xheetah\Seeders;
 
 use Illuminate\Database\Seeder;
-use Waygou\Helpers\RandomModel;
 use Waygou\Xheetah\Models\User;
 use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\Address;
