@@ -3,6 +3,7 @@
 namespace Waygou\Xheetah\Seeders;
 
 use Illuminate\Database\Seeder;
+use Waygou\Helpers\RandomModel;
 use Waygou\Xheetah\Models\User;
 use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\Address;
@@ -25,8 +26,8 @@ class TestingDataSeeder extends Seeder
     {
         // Factories.
         factory(Client::class, 10)->create();
-        factory(CostCenter::class, 20)->create();
-        factory(Address::class, 50)->create();
+        factory(CostCenter::class, 10)->create();
+        factory(Address::class, 10)->create();
 
         // Vehicle types.
         VehicleType::saveMany([
@@ -79,7 +80,7 @@ class TestingDataSeeder extends Seeder
         ]);
 
         // Users.
-        factory(User::class, 20)->create()->each(function ($user) {
+        factory(User::class, 30)->create()->each(function ($user) {
 
             // Apply the respective standard profile accordingly to the user main role.
             switch ($user->mainRole->code) {

@@ -17,37 +17,6 @@ if (! function_exists('me')) {
     }
 }
 
-if (! function_exists('seed_rand_id')) {
-    function seed_rand_id($table, $column = 'id')
-    {
-        $ids = DB::table($table)
-                 ->selectRaw("min(`{$column}`) min_id, max(`{$column}`) max_id")
-                 ->get()->toArray();
-
-        if ($ids[0]->min_id == null) {
-            return;
-        }
-
-        return rand($ids[0]->min_id, $ids[0]->max_id);
-    }
-}
-
-if (! function_exists('seed_rand_id_from_nulls')) {
-    function seed_rand_id_from_nulls($table, $column)
-    {
-        $ids = DB::table($table)
-                 ->selectRaw("min(`{$column}`) min_id, max(`{$column}`) max_id")
-                 ->whereNull($column)
-                 ->get()->toArray();
-
-        if ($ids[0]->min_id == null) {
-            return;
-        }
-
-        return rand($ids[0]->min_id, $ids[0]->max_id);
-    }
-}
-
 if (! function_exists('where_am_i')) {
     function where_am_i($prefix = null)
     {
