@@ -25,7 +25,9 @@ class DeliveryObserver
     public function creating(Delivery $model)
     {
         // Delivery is always created by the logged user.
-        $model->created_by = Auth::id();
+        if ($model->created_by == null) {
+            $model->created_by = Auth::id();
+        }
     }
 
     public function created(Delivery $model)
