@@ -6,7 +6,7 @@ use Waygou\Xheetah\Abstracts\XheetahModel;
 
 class DurationType extends XheetahModel
 {
-    public function serviceTypes()
+    public function deliveryTypes()
     {
         return $this->hasMany(DeliveryType::class);
     }

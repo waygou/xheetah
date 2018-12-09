@@ -29,7 +29,7 @@ class Delivery extends XheetahModel
         return $this->belongsTo(CostCenter::class);
     }
 
-    public function serviceType()
+    public function deliveryType()
     {
         return $this->belongsTo(DeliveryType::class);
     }
