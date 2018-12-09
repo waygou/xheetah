@@ -127,28 +127,6 @@ class CreateXheetahSchema extends Migration
             $table->collation = 'utf8_unicode_ci';
         });
 
-        Schema::create('delivery_logs', function (Blueprint $table) {
-            /** Columns */
-            $table->increments('id');
-
-            $table->integer('delivery_id')
-                  ->unsigned();
-
-            $table->integer('delivery_status_id')
-                  ->unsigned();
-
-            /** System columns */
-            $table->timestamps();
-            $table->softDeletes();
-
-            /** Engine */
-            $table->engine = 'InnoDB';
-
-            /** Collation */
-            $table->charset = 'utf8';
-            $table->collation = 'utf8_unicode_ci';
-        });
-
         Schema::create('configuration', function (Blueprint $table) {
             /** Columns */
             $table->increments('id');
