@@ -4,18 +4,18 @@ namespace Waygou\Xheetah\Tests;
 
 class RandomAddress
 {
-    var $address;
-    var $floorNumber;
-    var $city;
-    var $locality;
-    var $postal_code;
-    var $country;
-    var $countryCode;
-    var $map;
+    public $address;
+    public $floorNumber;
+    public $city;
+    public $locality;
+    public $postal_code;
+    public $country;
+    public $countryCode;
+    public $map;
 
-    var $addresses;
+    public $addresses;
 
-    function __construct()
+    public function __construct()
     {
         // Load random addresses.
         $this->addresses = [
@@ -27,7 +27,7 @@ class RandomAddress
              'postal_code'  => '1170-207',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.7252374,-9.1295062'],
+             'map'          => '38.7252374,-9.1295062', ],
 
             ['address'      => 'Rua Morais Soares 22',
              'floor_number' => '1o Esq',
@@ -36,7 +36,7 @@ class RandomAddress
              'postal_code'  => '1900',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.7310928,-9.1264145'],
+             'map'          => '38.7310928,-9.1264145', ],
 
             ['address'      => 'Rua Ana de Castro Osório 10',
              'floor_number' => '3o Dto',
@@ -45,7 +45,7 @@ class RandomAddress
              'postal_code'  => '2720-038',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.7416772,-9.2207023'],
+             'map'          => '38.7416772,-9.2207023', ],
 
             ['address'      => 'Avenida Heliodoro Salgado 10',
              'floor_number' => '5o Frente',
@@ -54,7 +54,7 @@ class RandomAddress
              'postal_code'  => '2710-572',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.801762,-9.382661599999999'],
+             'map'          => '38.801762,-9.382661599999999', ],
 
             ['address'      => 'Rua do Cabeço 10',
              'floor_number' => 'R/C Frente',
@@ -63,7 +63,7 @@ class RandomAddress
              'postal_code'  => '7400',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '39.2263218,-8.0326585'],
+             'map'          => '39.2263218,-8.0326585', ],
 
             ['address'      => 'Rua Eça de Queirós 89',
              'floor_number' => 'Lote 5',
@@ -72,7 +72,7 @@ class RandomAddress
              'postal_code'  => '2775',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.7009399,-9.328761199999999'],
+             'map'          => '38.7009399,-9.328761199999999', ],
 
             ['address'      => 'Beco do Girassol 1',
              'floor_number' => 'Armazem 2',
@@ -81,7 +81,7 @@ class RandomAddress
              'postal_code'  => '2910',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.5417025,-8.849954199999999'],
+             'map'          => '38.5417025,-8.849954199999999', ],
 
             ['address'      => 'Travessa das Amoreiras a Arroios 10',
              'floor_number' => 'Cabeleireiro Rosa',
@@ -90,7 +90,7 @@ class RandomAddress
              'postal_code'  => '1000-035',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.7337656,-9.1359517'],
+             'map'          => '38.7337656,-9.1359517', ],
 
             ['address'      => 'Campo Pequeno',
              'floor_number' => 'Restaurante Pedro Amargo',
@@ -99,7 +99,7 @@ class RandomAddress
              'postal_code'  => '1000-081',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.7425071,-9.1440445'],
+             'map'          => '38.7425071,-9.1440445', ],
 
             ['address'      => 'Rua de Ponta Delgada 29',
              'floor_number' => '9o Frente',
@@ -108,7 +108,7 @@ class RandomAddress
              'postal_code'  => '1000-001',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '38.73286520000001,-9.138896899999999'],
+             'map'          => '38.73286520000001,-9.138896899999999', ],
 
             ['address'      => 'Rua Almirante Reis 78',
              'floor_number' => '1o Dto',
@@ -117,7 +117,7 @@ class RandomAddress
              'postal_code'  => '8700-328',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '37.0269518,-7.843836499999999'],
+             'map'          => '37.0269518,-7.843836499999999', ],
 
             ['address'      => 'Rua Manuel Alves Cruz 22',
              'floor_number' => 'R/C Dto',
@@ -126,18 +126,18 @@ class RandomAddress
              'postal_code'  => '2430-058',
              'country'      => 'Portugal',
              'country_code' => 'PT',
-             'map'          => '39.7590919,-8.929899599999999'],
+             'map'          => '39.7590919,-8.929899599999999', ],
         ];
     }
 
     public function getOne()
     {
-        return (object)$this->getRandom();
+        return (object) $this->getRandom();
     }
 
     private function getRandom()
     {
-        return $this->addresses[rand(0, count($this->addresses)-1)];
+        return $this->addresses[rand(0, count($this->addresses) - 1)];
     }
 
     public function getTwo()
@@ -146,13 +146,13 @@ class RandomAddress
 
         $exit = false;
 
-        while (!$exit) {
+        while (! $exit) {
             $secondAddress = $this->getRandom();
             if ($secondAddress['address'] != $firstAddress['address']) {
                 $exit = true;
             }
-        };
+        }
 
-        return [(object)$firstAddress, (object)$secondAddress];
+        return [(object) $firstAddress, (object) $secondAddress];
     }
 }
