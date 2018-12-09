@@ -8,6 +8,7 @@ use Waygou\Xheetah\Models\Client;
 use Waygou\Xheetah\Models\Address;
 use Waygou\Xheetah\Models\Vehicle;
 use Waygou\Surveyor\Models\Profile;
+use Waygou\Xheetah\Models\Delivery;
 use Waygou\Xheetah\Models\MainRole;
 use Waygou\Xheetah\Models\CostCenter;
 use Waygou\Xheetah\Models\VehicleType;
@@ -23,7 +24,7 @@ class TestingDataSeeder extends Seeder
      */
     public function run()
     {
-        // Factories.
+        // Initial factories.
         factory(Client::class, 10)->create();
         factory(CostCenter::class, 10)->create();
         factory(Address::class, 10)->create();
@@ -254,5 +255,8 @@ class TestingDataSeeder extends Seeder
                                 'price_km'                 => 0.15,
                                 'price_km_additional'      => 0.25, ],
                             ]);
+
+        // Create deliveries.
+        factory(Delivery::class, 10)->create();
     }
 }
