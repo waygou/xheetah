@@ -38,7 +38,7 @@ class InstallSeeder extends Seeder
             ['name' => 'In transit', 'description' => 'In transit, progressed by the Courier'],
             ['name' => 'On hold at destination', 'description' => 'On Hold, at the destination'],
             ['name' => 'Delivered', 'description' => 'Delivered successfully at the destination'],
-            ['name' => 'Cancelled', 'description' => 'Cancelled (by client or coordination)']
+            ['name' => 'Cancelled', 'description' => 'Cancelled (by client or coordination)'],
         ]);
 
         // Load main roles.
