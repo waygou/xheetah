@@ -9,6 +9,7 @@ use Waygou\Surveyor\Models\Policy;
 use Waygou\Surveyor\Models\Profile;
 use Waygou\Xheetah\Models\MainRole;
 use Waygou\Xheetah\Models\Configuration;
+use Waygou\Xheetah\Models\DeliveryStatus;
 
 class InstallSeeder extends Seeder
 {
@@ -29,6 +30,16 @@ class InstallSeeder extends Seeder
                                'description' => 'Tentant application key for all API transactions.',
                                'code'        => 'tenant-key',
                                'value'       => str_random(10), ]);
+
+        DeliveryStatus::saveMany([
+            ['name' => 'New', 'description' => 'New delivery, just entered on the system'],
+            ['name' => 'Assigned', 'description' => 'Assigned to a Courier'],
+            ['name' => 'On hold at origin', 'description' => 'On Hold, at the origin'],
+            ['name' => 'In transit', 'description' => 'In transit, progressed by the Courier'],
+            ['name' => 'On hold at destination', 'description' => 'On Hold, at the destination'],
+            ['name' => 'Delivered', 'description' => 'Delivered successfully at the destination'],
+            ['name' => 'Cancelled', 'description' => 'Cancelled (by client or coordination)']
+        ]);
 
         // Load main roles.
         // A main role will allow the system to automatically inject business rules

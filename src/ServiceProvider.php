@@ -15,6 +15,7 @@ use Waygou\Xheetah\Models\VehicleType;
 use Waygou\Xheetah\Models\DeliveryType;
 use Waygou\Xheetah\Models\DurationType;
 use Waygou\Xheetah\Models\Childs\Courier;
+use Waygou\Xheetah\Models\DeliveryStatus;
 use Waygou\Xheetah\Observers\UserObserver;
 use Waygou\Xheetah\Commands\InstallCommand;
 use Waygou\Xheetah\Models\Childs\ClientUser;
@@ -29,6 +30,7 @@ use Waygou\Xheetah\Observers\CostCenterObserver;
 use Waygou\Xheetah\Observers\VehicleTypeObserver;
 use Waygou\Xheetah\Observers\DeliveryTypeObserver;
 use Waygou\Xheetah\Observers\DurationTypeObserver;
+use Waygou\Xheetah\Observers\DeliveryStatusObserver;
 use Waygou\Xheetah\Observers\Childs\ClientUserObserver;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -73,6 +75,7 @@ class ServiceProvider extends BaseServiceProvider
         DurationType::observe(DurationTypeObserver::class);
         DeliveryType::observe(DeliveryTypeObserver::class);
         Delivery::observe(DeliveryObserver::class);
+        DeliveryStatus::observe(DeliveryStatusObserver::class);
     }
 
     protected function registerPublishing()
