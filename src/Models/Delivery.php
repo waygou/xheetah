@@ -2,6 +2,7 @@
 
 namespace Waygou\Xheetah\Models;
 
+use Waygou\Xheetah\Models\DeliveryStatus;
 use Waygou\Xheetah\Abstracts\XheetahModel;
 
 /**
@@ -32,6 +33,11 @@ class Delivery extends XheetahModel
     public function deliveryType()
     {
         return $this->belongsTo(DeliveryType::class);
+    }
+
+    public function deliveryStatus()
+    {
+        return $this->belongsTo(DeliveryStatus::class);
     }
 
     public function creator()

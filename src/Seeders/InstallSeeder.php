@@ -132,6 +132,13 @@ class InstallSeeder extends Seeder
              'is_data_restricted' => false,
              'description'        => 'Default policy for delivery types.', ],
 
+            ['name'               => 'Delivery Status default',
+             'code'               => 'delivery-status-default',
+             'model'              => 'Waygou\Xheetah\Models\DeliveryStatus',
+             'policy'             => 'Waygou\Xheetah\Policies\DeliveryStatus\DefaultPolicy',
+             'is_data_restricted' => false,
+             'description'        => 'Default policy for delivery types.', ],
+
              /*
             ['name' => 'Manages its own Client',
              'code' => 'client-only',

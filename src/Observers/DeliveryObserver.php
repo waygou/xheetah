@@ -4,6 +4,7 @@ namespace Waygou\Xheetah\Observers;
 
 use Waygou\Xheetah\Models\Delivery;
 use Illuminate\Support\Facades\Auth;
+use Waygou\Xheetah\Models\DeliveryStatusChange;
 
 class DeliveryObserver
 {
@@ -14,12 +15,23 @@ class DeliveryObserver
 
     public function saving(Delivery $model)
     {
-        //
+        // Unset non-eloquent fields.
+        unset($model['origin_related_address']);
+        unset($model['destination_related_address']);
     }
 
     public function saved(Delivery $model)
     {
         save_user_log($model);
+
+        // Status changed? -- New entry on DeliveryStatusChange
+        if ($model->isDirty('delivery_status_id') && $model->delivery_status_id != null) {
+            DeliveryStatusChange::saveMany([
+                ['delivery_id' => $model->id,
+                 'delivery_status_id' => $model->delivery_status_id,
+                 'courier_id' => $model->courier_id]
+                ]);
+        };
     }
 
     public function creating(Delivery $model)
