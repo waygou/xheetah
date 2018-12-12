@@ -3,7 +3,6 @@
 namespace Waygou\Xheetah\Models;
 
 use Waygou\Xheetah\Abstracts\XheetahModel;
-use Waygou\Xheetah\Models\DeliveryStatusChange;
 
 class DeliveryStatus extends XheetahModel
 {
