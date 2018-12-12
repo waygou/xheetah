@@ -29,9 +29,9 @@ class DeliveryObserver
             DeliveryStatusChange::saveMany([
                 ['delivery_id' => $model->id,
                  'delivery_status_id' => $model->delivery_status_id,
-                 'courier_id' => $model->courier_id]
+                 'courier_id' => $model->courier_id, ],
                 ]);
-        };
+        }
     }
 
     public function creating(Delivery $model)

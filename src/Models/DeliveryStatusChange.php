@@ -2,9 +2,7 @@
 
 namespace Waygou\Xheetah\Models;
 
-use Waygou\Xheetah\Models\Delivery;
 use Waygou\Xheetah\Models\Childs\Courier;
-use Waygou\Xheetah\Models\DeliveryStatus;
 use Waygou\Xheetah\Abstracts\XheetahModel;
 
 class DeliveryStatusChange extends XheetahModel
