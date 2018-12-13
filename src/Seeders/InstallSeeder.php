@@ -137,7 +137,14 @@ class InstallSeeder extends Seeder
              'model'              => 'Waygou\Xheetah\Models\DeliveryStatus',
              'policy'             => 'Waygou\Xheetah\Policies\DeliveryStatus\DefaultPolicy',
              'is_data_restricted' => false,
-             'description'        => 'Default policy for delivery types.', ],
+             'description'        => 'Default policy for delivery statuses.', ],
+
+            ['name'               => 'Delivery Status Change default',
+             'code'               => 'delivery-status-change-default',
+             'model'              => 'Waygou\Xheetah\Models\DeliveryStatusChange',
+             'policy'             => 'Waygou\Xheetah\Policies\DeliveryStatusChange\DefaultPolicy',
+             'is_data_restricted' => false,
+             'description'        => 'Default policy for delivery status changes.', ],
 
              /*
             ['name' => 'Manages its own Client',
@@ -255,6 +262,20 @@ class InstallSeeder extends Seeder
         // Apply policies to profiles.
         // Super admin -- Full access to all entities + system tools.
         Profile::where('code', 'super-admin')->first()->policies()->attach(
+            [Policy::where('code', 'delivery-status-change-default')->first()->id],
+            ['can_view_any'     => true,
+             'can_view'         => true,
+             'can_create'       => false,
+             'can_update'       => false,
+             'can_delete'       => false,
+             'can_restore'      => false,
+             'can_force_delete' => false,
+            ]
+        );
+
+        // Apply policies to profiles.
+        // Super admin -- Full access to all entities + system tools.
+        Profile::where('code', 'super-admin')->first()->policies()->attach(
             [Policy::where('code', 'main-role-default')->first()->id,
              Policy::where('code', 'client-default')->first()->id,
              Policy::where('code', 'cost-center-default')->first()->id,
@@ -264,6 +285,7 @@ class InstallSeeder extends Seeder
              Policy::where('code', 'employee-default')->first()->id,
              Policy::where('code', 'duration-type-default')->first()->id,
              Policy::where('code', 'delivery-default')->first()->id,
+             Policy::where('code', 'delivery-status-default')->first()->id,
              Policy::where('code', 'vehicle-type-default')->first()->id,
              Policy::where('code', 'client-user-default')->first()->id,
              Policy::where('code', 'address-default')->first()->id,

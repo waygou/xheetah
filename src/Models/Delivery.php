@@ -50,4 +50,9 @@ class Delivery extends XheetahModel
         // a Courier anymore. So, we attached it to the User.
         return $this->belongsTo(User::class, 'courier_id');
     }
+
+    public function getDeliveryResumeAttribute($value)
+    {
+        return $this->client->name . ', ' . $this->origin_address . ' to ' . $this->destination_address;
+    }
 }

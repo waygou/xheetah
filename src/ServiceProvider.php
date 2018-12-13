@@ -26,12 +26,14 @@ use Waygou\Xheetah\Observers\VehicleObserver;
 use Waygou\Xheetah\Observers\DeliveryObserver;
 use Waygou\Xheetah\Observers\MainRoleObserver;
 use Waygou\Surveyor\Bootstrap\SurveyorProvider;
+use Waygou\Xheetah\Models\DeliveryStatusChange;
 use Waygou\Xheetah\Observers\CostCenterObserver;
 use Waygou\Xheetah\Observers\VehicleTypeObserver;
 use Waygou\Xheetah\Observers\DeliveryTypeObserver;
 use Waygou\Xheetah\Observers\DurationTypeObserver;
 use Waygou\Xheetah\Observers\DeliveryStatusObserver;
 use Waygou\Xheetah\Observers\Childs\ClientUserObserver;
+use Waygou\Xheetah\Observers\DeliveryStatusChangeObserver;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -76,6 +78,7 @@ class ServiceProvider extends BaseServiceProvider
         DeliveryType::observe(DeliveryTypeObserver::class);
         Delivery::observe(DeliveryObserver::class);
         DeliveryStatus::observe(DeliveryStatusObserver::class);
+        DeliveryStatusChange::observe(DeliveryStatusChangeObserver::class);
     }
 
     protected function registerPublishing()
