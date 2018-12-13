@@ -53,6 +53,6 @@ class Delivery extends XheetahModel
 
     public function getDeliveryResumeAttribute($value)
     {
-        return $this->client->name . ', ' . $this->origin_address . ' to ' . $this->destination_address;
+        return $this->client->name.', '.$this->origin_address.' to '.$this->destination_address;
     }
 }
